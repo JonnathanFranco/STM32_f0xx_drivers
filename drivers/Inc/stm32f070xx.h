@@ -113,40 +113,75 @@ typedef struct
 #define RCC	  ((RCC_RegDef_t*)RCC_BASEADDR)
 
 
-/*
- ************** Clock enable mC:\Users\z3546658\OneDrive - UNSW\Desktop\STM32_Drivers\stm32f0xx_driversos for GPIO peripherals	*******************
- */
-#define GPIOA_PCLK_ENABLE()			(RCC->AHBENR |= (1 << 17))
-#define GPIOB_PCLK_ENABLE()			(RCC->AHBENR |= (1 << 18))
-#define GPIOC_PCLK_ENABLE()			(RCC->AHBENR |= (1 << 19))
-#define GPIOD_PCLK_ENABLE()			(RCC->AHBENR |= (1 << 20))
-#define GPIOF_PCLK_ENABLE()			(RCC->AHBENR |= (1 << 22))
+//#################		Clock enable macros		##########################################
+//**************  GPIO 	*******************
+#define GPIOA_PCLK_EN()			(RCC->AHBENR |= (1 << 17))
+#define GPIOB_PCLK_EN()			(RCC->AHBENR |= (1 << 18))
+#define GPIOC_PCLK_EN()			(RCC->AHBENR |= (1 << 19))
+#define GPIOD_PCLK_EN()			(RCC->AHBENR |= (1 << 20))
+#define GPIOF_PCLK_EN()			(RCC->AHBENR |= (1 << 22))
+//************** I2C 	*******************
+#define I2C1_PCLK_EN()			(RCC->APB1ENR |= (1 << 21))
+#define I2C2_PCLK_EN()			(RCC->APB1ENR |= (1 << 22))
+//**************  SPI 	*******************
+#define SPI1_PCLK_EN()			(RCC->APB2ENR |= (1 << 12))
+#define SPI2_PCLK_EN()			(RCC->APB1ENR |= (1 << 14))
+//**************  USARTX *******************
+#define USART1_PCLK_EN()		(RCC->APB2ENR |= (1 << 14))
+#define USART2_PCLK_EN()		(RCC->APB1ENR |= (1 << 17))
+#define USART3_PCLK_EN()		(RCC->APB1ENR |= (1 << 18))
+#define USART4_PCLK_EN()		(RCC->APB1ENR |= (1 << 19))
+//************** SYSCONFIG *******************
+#define SYSCFR_PCLK_EN()		(RCC->APB2ENR |= (1 << 0))
+//##########################################################################################
+
+
+//#################		Clock disable macros		##########################################
+//**************  GPIO 	*******************
+#define GPIOA_PCLK_EN()			(RCC->AHBENR &= ~(1 << 17))
+#define GPIOB_PCLK_EN()			(RCC->AHBENR &= ~(1 << 18))
+#define GPIOC_PCLK_EN()			(RCC->AHBENR &= ~(1 << 19))
+#define GPIOD_PCLK_EN()			(RCC->AHBENR &= ~(1 << 20))
+#define GPIOF_PCLK_EN()			(RCC->AHBENR &= ~(1 << 22))
+//************** I2C 	*******************
+#define I2C1_PCLK_EN()			(RCC->APB1ENR &= ~(1 << 21))
+#define I2C2_PCLK_EN()			(RCC->APB1ENR &= ~(1 << 22))
+//**************  SPI 	*******************
+#define SPI1_PCLK_EN()			(RCC->APB2ENR &= ~(1 << 12))
+#define SPI2_PCLK_EN()			(RCC->APB1ENR &= ~(1 << 14))
+//**************  USARTX *******************
+#define USART1_PCLK_EN()		(RCC->APB2ENR &= ~(1 << 14))
+#define USART2_PCLK_EN()		(RCC->APB1ENR &= ~(1 << 17))
+#define USART3_PCLK_EN()		(RCC->APB1ENR &= ~(1 << 18))
+#define USART4_PCLK_EN()		(RCC->APB1ENR &= ~(1 << 19))
+//************** SYSCONFIG *******************
+#define SYSCFR_PCLK_EN()		(RCC->APB2ENR &= ~(1 << 0))
+//##########################################################################################
 
 /*
- ************** Clock enable macros for I2C peripherals	*******************
- */
+//#################		Clock RESET macros		##########################################
+//**************  GPIO 	*******************
+#define GPIOA_PCLK_DI()			(RCC->AHBRSTR |= (1 << 17))
+#define GPIOB_PCLK_DI()			(RCC->AHBRSTR |= (1 << 18))
+#define GPIOC_PCLK_DI()			(RCC->AHBRSTR |= (1 << 19))
+#define GPIOD_PCLK_DI()			(RCC->AHBRSTR |= (1 << 20))
+#define GPIOF_PCLK_DI()			(RCC->AHBRSTR |= (1 << 22))
+//************** I2C 	*******************
+#define I2C1_PCLK_DI()			(RCC->APB1RSTR |= (1 << 21))
+#define I2C2_PCLK_DI()			(RCC->APB1RSTR |= (1 << 22))
+//**************  SPI 	*******************
+#define SPI1_PCLK_DI()			(RCC->APB2RSTR |= (1 << 12))
+#define SPI2_PCLK_DI()			(RCC->APB1RSTR |= (1 << 14))
+//**************  USARTX *******************
+#define USART1_PCLK_DI()		(RCC->APB2RSTR |= (1 << 14))
+#define USART2_PCLK_DI()		(RCC->APB1RSTR |= (1 << 17))
+#define USART3_PCLK_DI()		(RCC->APB1RSTR |= (1 << 18))
+#define USART4_PCLK_DI()		(RCC->APB1RSTR |= (1 << 19))
+//************** SYSCONFIG *******************
+#define SYSCFR_PCLK_DI()		(RCC->APB2RSTR |= (1 << 0))
+//##########################################################################################
 
-
-/*
- ************** Clock enable macros for SPI peripherals	*******************
- */
-
-
-/*
- ************** Clock enable macros for USARTX peripherals	*******************
- */
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 
 
 
