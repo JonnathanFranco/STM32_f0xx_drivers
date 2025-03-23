@@ -138,66 +138,25 @@ typedef struct
 
 //#################		Clock disable macros		##########################################
 //**************  GPIO 	*******************
-#define GPIOA_PCLK_EN()			(RCC->AHBENR &= ~(1 << 17))
-#define GPIOB_PCLK_EN()			(RCC->AHBENR &= ~(1 << 18))
-#define GPIOC_PCLK_EN()			(RCC->AHBENR &= ~(1 << 19))
-#define GPIOD_PCLK_EN()			(RCC->AHBENR &= ~(1 << 20))
-#define GPIOF_PCLK_EN()			(RCC->AHBENR &= ~(1 << 22))
+#define GPIOA_PCLK_DI()			(RCC->AHBENR &= ~(1 << 17))
+#define GPIOB_PCLK_DI()			(RCC->AHBENR &= ~(1 << 18))
+#define GPIOC_PCLK_DI()			(RCC->AHBENR &= ~(1 << 19))
+#define GPIOD_PCLK_DI()			(RCC->AHBENR &= ~(1 << 20))
+#define GPIOF_PCLK_DI()			(RCC->AHBENR &= ~(1 << 22))
 //************** I2C 	*******************
-#define I2C1_PCLK_EN()			(RCC->APB1ENR &= ~(1 << 21))
-#define I2C2_PCLK_EN()			(RCC->APB1ENR &= ~(1 << 22))
+#define I2C1_PCLK_DI()			(RCC->APB1ENR &= ~(1 << 21))
+#define I2C2_PCLK_DI()			(RCC->APB1ENR &= ~(1 << 22))
 //**************  SPI 	*******************
-#define SPI1_PCLK_EN()			(RCC->APB2ENR &= ~(1 << 12))
-#define SPI2_PCLK_EN()			(RCC->APB1ENR &= ~(1 << 14))
+#define SPI1_PCLK_DI()			(RCC->APB2ENR &= ~(1 << 12))
+#define SPI2_PCLK_DI()			(RCC->APB1ENR &= ~(1 << 14))
 //**************  USARTX *******************
-#define USART1_PCLK_EN()		(RCC->APB2ENR &= ~(1 << 14))
-#define USART2_PCLK_EN()		(RCC->APB1ENR &= ~(1 << 17))
-#define USART3_PCLK_EN()		(RCC->APB1ENR &= ~(1 << 18))
-#define USART4_PCLK_EN()		(RCC->APB1ENR &= ~(1 << 19))
+#define USART1_PCLK_DI()		(RCC->APB2ENR &= ~(1 << 14))
+#define USART2_PCLK_DI()		(RCC->APB1ENR &= ~(1 << 17))
+#define USART3_PCLK_DI()		(RCC->APB1ENR &= ~(1 << 18))
+#define USART4_PCLK_DI()		(RCC->APB1ENR &= ~(1 << 19))
 //************** SYSCONFIG *******************
-#define SYSCFR_PCLK_EN()		(RCC->APB2ENR &= ~(1 << 0))
+#define SYSCFR_PCLK_DI()		(RCC->APB2ENR &= ~(1 << 0))
 //##########################################################################################
-
-/*
-//#################		Clock RESET macros		##########################################
-//**************  GPIO 	*******************
-#define GPIOA_PCLK_DI()			(RCC->AHBRSTR |= (1 << 17))
-#define GPIOB_PCLK_DI()			(RCC->AHBRSTR |= (1 << 18))
-#define GPIOC_PCLK_DI()			(RCC->AHBRSTR |= (1 << 19))
-#define GPIOD_PCLK_DI()			(RCC->AHBRSTR |= (1 << 20))
-#define GPIOF_PCLK_DI()			(RCC->AHBRSTR |= (1 << 22))
-//************** I2C 	*******************
-#define I2C1_PCLK_DI()			(RCC->APB1RSTR |= (1 << 21))
-#define I2C2_PCLK_DI()			(RCC->APB1RSTR |= (1 << 22))
-//**************  SPI 	*******************
-#define SPI1_PCLK_DI()			(RCC->APB2RSTR |= (1 << 12))
-#define SPI2_PCLK_DI()			(RCC->APB1RSTR |= (1 << 14))
-//**************  USARTX *******************
-#define USART1_PCLK_DI()		(RCC->APB2RSTR |= (1 << 14))
-#define USART2_PCLK_DI()		(RCC->APB1RSTR |= (1 << 17))
-#define USART3_PCLK_DI()		(RCC->APB1RSTR |= (1 << 18))
-#define USART4_PCLK_DI()		(RCC->APB1RSTR |= (1 << 19))
-//************** SYSCONFIG *******************
-#define SYSCFR_PCLK_DI()		(RCC->APB2RSTR |= (1 << 0))
-//##########################################################################################
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
