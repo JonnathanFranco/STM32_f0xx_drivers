@@ -158,6 +158,16 @@ typedef struct
 #define SYSCFR_PCLK_DI()		(RCC->APB2ENR &= ~(1 << 0))
 //##########################################################################################
 
+/*################################
+ *	 Some generic macros
+ ###############################*/
+
+#define ENABLE			1
+#define DISABLE			0
+#define SER 			ENABLE
+#define RESET			DISABLE
+#define GPIO_PIN_SET	SET
+#define GPIO_PIN_RESET	RESET
 
 
 
