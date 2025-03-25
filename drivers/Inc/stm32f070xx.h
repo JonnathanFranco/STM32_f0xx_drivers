@@ -84,11 +84,11 @@ typedef struct
 	__vo uint32_t APB2RSTR;		//Address offset: 0x0C
 	__vo uint32_t APB1RSTR;		//Address offset: 0x10
 	__vo uint32_t AHBENR;		//Address offset: 0x14
-	__vo uint32_t APB2ENR;
-	__vo uint32_t APB1ENR;
-	__vo uint32_t BDCR;			// Array of [1] Low reg [2] High reg
-	__vo uint32_t CSR;
-	__vo uint32_t AHBRSTR;
+	__vo uint32_t APB2ENR;		//Address offset: 0x18
+	__vo uint32_t APB1ENR;		//Address offset: 0x1C
+	__vo uint32_t BDCR;			//Address offset: 0x20				if double"high and low" then: Array of [1] Low reg [2] High reg
+	__vo uint32_t CSR;			//Address offset: 0x24
+	__vo uint32_t AHBRSTR;		//Address offset: 0x28
 	__vo uint32_t CFGR2;
 	__vo uint32_t CFGR3;
 	__vo uint32_t CR2;			//Address offset: 0x34
@@ -157,6 +157,18 @@ typedef struct
 //************** SYSCONFIG *******************
 #define SYSCFR_PCLK_DI()		(RCC->APB2ENR &= ~(1 << 0))
 //##########################################################################################
+
+
+/*
+ * Macros to reset GPIOx Peripherals
+ */
+#define GPIOA_REG_RESET()		do{ (RCC->AHBRSTR |= (1 << 17)); (RCC->AHBRSTR &= ~(1 << 17)); }while(0)
+#define GPIOB_REG_RESET()		do{ (RCC->AHBRSTR |= (1 << 18)); (RCC->AHBRSTR &= ~(1 << 18)); }while(0)
+#define GPIOC_REG_RESET()		do{ (RCC->AHBRSTR |= (1 << 19)); (RCC->AHBRSTR &= ~(1 << 19)); }while(0)
+#define GPIOD_REG_RESET()		do{ (RCC->AHBRSTR |= (1 << 20)); (RCC->AHBRSTR &= ~(1 << 20)); }while(0)
+#define GPIOF_REG_RESET()		do{ (RCC->AHBRSTR |= (1 << 22)); (RCC->AHBRSTR &= ~(1 << 22)); }while(0)
+
+
 
 /*################################
  *	 Some generic macros
