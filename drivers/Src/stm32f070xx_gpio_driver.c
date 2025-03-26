@@ -180,26 +180,75 @@ void GPIO_DeInit(GPIO_RegDef_t *pGPIOx)
 /*
  * Data Read and Qrite
  */
-uint8_t GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOX, uint8_t PinNumber)
+/*************************************************************************************
+ * @fn				- GPIO
+ *
+ * @brief			-  GPIO port
+ *
+ * @param[in]		- Base Address of the GPIO PRERIPHERAL
+ * @param[in]		-
+ * @param[in]		-
+ *
+ * @return			- 0 or 1
+ *
+ * @Note			- None
+ *
+ *
+ **************************************************************************************/
+uint8_t GPIO_ReadFromInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
 {
+	uint8_t value;
+
+	value = (uint8_t) ((pGPIOx->IDR >> PinNumber) & 0x00000001);
+
+	return value;
+}
+
+
+uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOx)
+{
+	uint16_t value;
+
+	value = (uint16_t) pGPIOx->IDR;
+
+	return value;
+}
+
+
+
+void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Value)
+{
+	if(Value == GPIO_PIN_SET)
+	{
+		//write 1 to the output data register at the bit field corresponding to the pin number
+		pGPIOx->ODR |= (1 << PinNumber);
+	}else
+	{
+		//write 0
+		pGPIOx->ODR &= ~(1 << PinNumber);
+	}
+
 
 }
-uint16_t GPIO_ReadFromInputPort(GPIO_RegDef_t *pGPIOX)
-{
 
-}
-void GPIO_WriteToOutputPin(GPIO_RegDef_t *pGPIOX, uint8_t PinNumber, uint8_t Value)
-{
 
-}
-void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOX, uint16_t Value)
-{
 
-}
-void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOX, uint8_t PinNumber)
-{
 
+void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t Value)
+{
+	//
+	pGPIOx->ODR = Value;
 }
+
+
+
+
+void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
+{
+	pGPIOx->ODR	^=	(1 << PinNumber);
+}
+
+
 
 /*
  * IRQ Configuration and ISR handling
@@ -208,6 +257,12 @@ void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnorDi)
 {
 
 }
+
+
+
+
+
+
 void GPIO_IRQHandling(uint8_t PinNumber)
 {
 
