@@ -113,7 +113,7 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 	temp = 0;
 
 	//3. configure the pull up and pull down
-	temp = (pGPIOHandle->GPIO_PinConfig->GPIO_PinPuPControl << (2 * pGPIOHandle->GPIO_PinConfig->GPIO_PinNumber));
+	temp = (pGPIOHandle->GPIO_PinConfig->GPIO_PinPuPdControl << (2 * pGPIOHandle->GPIO_PinConfig->GPIO_PinNumber));
 	pGPIOHandle->pGPIOx->PUPDR &= ~(0x3 << pGPIOHandle->GPIO_PinConfig->GPIO_PinNumber); //Clearing
 	pGPIOHandle->pGPIOx->PUPDR |= temp;
 

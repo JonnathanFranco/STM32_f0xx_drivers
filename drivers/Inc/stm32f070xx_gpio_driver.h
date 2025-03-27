@@ -16,7 +16,7 @@ typedef struct
 {
 	uint8_t GPIO_PinNumber;			//@GPIO_PIN_NUMBER
 	uint8_t GPIO_PinMode;			//@GPIO_PIN_MODE Possible modes registers
-	uint8_t GPIO_PinPuPControl;		//@GPIO_OP_TYPE Pull up / pull down
+	uint8_t GPIO_PinPuPdControl;	//@GPIO_OP_TYPE Pull up / pull down
 	uint8_t GPIO_PinSpeed;			//@GPIO_SPEED Possible Output Speeds
 	uint8_t GPIO_PinOPType;			//@GPIO_TYPE
 	uint8_t GPIO_PinAltFunMode;
@@ -34,7 +34,7 @@ typedef struct
 {
 	//Pointer to holder base address of the GPIO PERIPHERAL
 	GPIO_RegDef_t *pGPIOx;					//base address of GPIO port
-	GPIO_PinConfig_t *GPIO_PinConfig;		//GPIO Pin conf settings
+	GPIO_PinConfig_t *GPIO_PinConfig;		//GPIO Pin configuration settings
 
 }GPIO_Handle_t;
 
