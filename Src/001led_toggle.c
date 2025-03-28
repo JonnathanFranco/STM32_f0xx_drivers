@@ -27,7 +27,7 @@ int main(void)
 
 	GPIO_Handle_t GpioLed;
 
-	memset(GpioLed[], 0, sizeof(GpioLed));
+//	memset(GpioLed[], 0, sizeof(GpioLed));
 
 
 	GpioLed.pGPIOx = GPIOA;
