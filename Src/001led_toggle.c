@@ -6,6 +6,9 @@
  */
 
 #include "stm32f070xx.h"
+
+
+
 //#include "stm32f070xx_gpio_driver.h"
 
 void delay(void)
@@ -13,11 +16,19 @@ void delay(void)
 	for(uint32_t i=0 ; i<50000 ; i++);
 }
 
+//memset(GpioLed, 0, sizeof (GPIO_Handle_t GpioLed));
+//GPIO_Handle_t GpioLed = {};
 
 
 int main(void)
 {
+
+
+
 	GPIO_Handle_t GpioLed;
+
+	memset(GpioLed[], 0, sizeof(GpioLed));
+
 
 	GpioLed.pGPIOx = GPIOA;
 
@@ -29,9 +40,12 @@ int main(void)
 
 
 
-	GPIO_PeriClockControl(GPIOA,ENABLE);
+
+
+	GPIO_PeriClockControl(GPIOA, ENABLE);
 
 	GPIO_Init(&GpioLed);
+
 
 	while(1)
 	{
